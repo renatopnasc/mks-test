@@ -20,6 +20,7 @@ interface ProductsCartProps {
   name: string;
   photo: string;
   price: string;
+  quantity: number;
 }
 
 export function Home() {
@@ -34,8 +35,35 @@ export function Home() {
     })
   );
 
+  function updateProductQuantity(item: ProductsCartProps) {
+    console.log("entrei");
+
+    const newProductsCart = productsOnCart.map((product) => {
+      if (product.name === item.name) {
+        return { ...product, quantity: product.quantity + 1 };
+      }
+
+      return product;
+    });
+
+    setProductsOnCart(newProductsCart);
+  }
+
   function addItemToCart(name: string, photo: string, price: string) {
-    setProductsOnCart([...productsOnCart, { name, photo, price }]);
+    const existingProduct = productsOnCart.find(
+      (product) => product.name === name
+    );
+
+    if (existingProduct) {
+      updateProductQuantity(existingProduct);
+    } else {
+      setProductsOnCart([
+        ...productsOnCart,
+        { name, photo, price, quantity: 1 },
+      ]);
+    }
+
+    console.log(productsOnCart);
   }
 
   function removeItemFromCart(itemName: string) {
@@ -52,6 +80,7 @@ export function Home() {
         itemsQuantity={productsOnCart.length}
         cartProducts={productsOnCart}
         onRemoveItem={removeItemFromCart}
+        onUpdateQuantity={updateProductQuantity}
       />
 
       <main>

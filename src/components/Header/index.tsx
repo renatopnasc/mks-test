@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, CartButton, Cart, FinalizeOrderButton } from "./styles";
 import { HiMiniShoppingCart } from "react-icons/hi2";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -8,25 +8,43 @@ type ProductsCartType = {
   name: string;
   photo: string;
   price: string;
+  quantity: number;
 };
 
 interface HeaderProps {
   itemsQuantity: number;
   cartProducts: ProductsCartType[];
   onRemoveItem: (itemName: string) => void;
+  onUpdateQuantity: (item: ProductsCartType) => void;
 }
 
 export function Header({
   itemsQuantity,
   cartProducts,
   onRemoveItem,
+  onUpdateQuantity,
 }: HeaderProps) {
   const [openCart, setOpenCart] = useState(false);
-  // const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(0);
 
   function handleDisableCart() {
     setOpenCart((state) => !state);
   }
+
+  useEffect(() => {
+    function updateAmout() {
+      if (cartProducts.length === 0) {
+        setAmount(0);
+      }
+
+      setAmount(0);
+      cartProducts.map((product) =>
+        setAmount((state) => state + Number(product.price) * product.quantity)
+      );
+    }
+
+    updateAmout();
+  }, [cartProducts]);
 
   return (
     <Container>
@@ -57,6 +75,8 @@ export function Header({
                   name={product.name}
                   price={product.price}
                   onRemoveItem={onRemoveItem}
+                  quantity={product.quantity}
+                  onUpdateQuantity={onUpdateQuantity}
                   key={product.name}
                 />
               ))}
@@ -65,7 +85,7 @@ export function Header({
             <footer>
               <p>Total:</p>
 
-              <p>R$0</p>
+              <p>R${amount}</p>
             </footer>
           </main>
 

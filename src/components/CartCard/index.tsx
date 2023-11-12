@@ -1,7 +1,6 @@
 import { Container } from "./styles";
 import { AiOutlineClose } from "react-icons/ai";
 import { Counter } from "../Counter";
-import { useState } from "react";
 
 type ProductsCartType = {
   name: string;
@@ -27,8 +26,6 @@ export function CartCard({
   onRemoveItem,
   onUpdateQuantity,
 }: CartCardProps) {
-  const [productQuantity, setProductQuantity] = useState(quantity);
-
   return (
     <Container>
       <img src={photo} alt="" />

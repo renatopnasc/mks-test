@@ -22,7 +22,7 @@ export function Header({
   onRemoveItem,
 }: HeaderProps) {
   const [openCart, setOpenCart] = useState(false);
-  const [amount, setAmount] = useState(0);
+  // const [amount, setAmount] = useState(0);
 
   function handleDisableCart() {
     setOpenCart((state) => !state);
@@ -65,7 +65,7 @@ export function Header({
             <footer>
               <p>Total:</p>
 
-              <p>R${amount}</p>
+              <p>R$0</p>
             </footer>
           </main>
 

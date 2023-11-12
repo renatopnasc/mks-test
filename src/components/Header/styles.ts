@@ -110,6 +110,10 @@ export const Cart = styled.div`
     > div {
       height: 24rem;
       overflow: auto;
+
+      @media (max-width: 425px) {
+        height: 42rem;
+      }
     }
 
     footer {

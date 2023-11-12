@@ -112,7 +112,7 @@ export const Cart = styled.div`
       overflow: auto;
 
       @media (max-width: 425px) {
-        height: 42rem;
+        height: 38rem;
       }
     }
 

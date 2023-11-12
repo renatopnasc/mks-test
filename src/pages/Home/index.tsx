@@ -26,7 +26,7 @@ export function Home() {
   const [products, setProducts] = useState<ProductsProps[]>([]);
   const [productsOnCart, setProductsOnCart] = useState<ProductsCartProps[]>([]);
 
-  const { isLoading, error, data } = useQuery("repoData", () =>
+  const { isLoading } = useQuery("repoData", () =>
     fetch(
       "https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=name&orderBy=ASC"
     ).then((response) => {

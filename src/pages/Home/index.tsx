@@ -35,10 +35,16 @@ export function Home() {
     })
   );
 
-  function updateProductQuantity(item: ProductsCartProps) {
-    console.log("entrei");
-
+  function updateProductQuantity(item: ProductsCartProps, operation?: string) {
     const newProductsCart = productsOnCart.map((product) => {
+      if (operation === "minus") {
+        if (product.name === item.name) {
+          return { ...product, quantity: product.quantity - 1 };
+        }
+
+        return product;
+      }
+
       if (product.name === item.name) {
         return { ...product, quantity: product.quantity + 1 };
       }
@@ -62,8 +68,6 @@ export function Home() {
         { name, photo, price, quantity: 1 },
       ]);
     }
-
-    console.log(productsOnCart);
   }
 
   function removeItemFromCart(itemName: string) {

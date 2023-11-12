@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { Container } from "./styles";
+
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 type ProductsCartType = {
   name: string;
@@ -10,7 +11,7 @@ type ProductsCartType = {
 
 interface CounterProps {
   onRemoveItem: () => void;
-  onUpdateQuantity: (item: ProductsCartType) => void;
+  onUpdateQuantity: (item: ProductsCartType, operation?: string) => void;
   product: ProductsCartType;
   quantity: number;
 }
@@ -21,22 +22,24 @@ export function Counter({
   onUpdateQuantity,
   product,
 }: CounterProps) {
-  const [productQuantity, setProductQuantity] = useState(quantity);
-
   function handleRemoveProduct() {
-    if (productQuantity === 1) {
+    if (product.quantity === 1) {
       onRemoveItem();
 
       return;
     }
 
-    setProductQuantity((state) => state - 1);
+    onUpdateQuantity(product, "minus");
   }
   return (
     <Container>
-      <button onClick={handleRemoveProduct}>-</button>
+      <button onClick={handleRemoveProduct}>
+        <AiOutlineMinus size={8} />
+      </button>
       <p>{quantity}</p>
-      <button onClick={() => onUpdateQuantity(product)}>+</button>
+      <button onClick={() => onUpdateQuantity(product)}>
+        <AiOutlinePlus size={8} />
+      </button>
     </Container>
   );
 }

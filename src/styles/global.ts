@@ -17,4 +17,10 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme["gray-100"]};
   }
+
+  @media (max-width: 425px) {
+    :root {
+      font-size: 87.5%;
+    }
+  }
 `;

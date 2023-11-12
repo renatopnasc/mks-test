@@ -35,14 +35,16 @@ export function CartCard({
 
       <h1>{name}</h1>
 
-      <Counter
-        quantity={quantity}
-        onUpdateQuantity={onUpdateQuantity}
-        onRemoveItem={() => onRemoveItem(name)}
-        product={{ name, photo, price, quantity }}
-      />
+      <div>
+        <Counter
+          quantity={quantity}
+          onUpdateQuantity={onUpdateQuantity}
+          onRemoveItem={() => onRemoveItem(name)}
+          product={{ name, photo, price, quantity }}
+        />
 
-      <p>R${price}</p>
+        <p>R${price}</p>
+      </div>
 
       <button onClick={() => onRemoveItem(name)}>
         <AiOutlineClose size={16} />

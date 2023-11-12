@@ -24,6 +24,10 @@ export const Container = styled.header`
       font-weight: 300;
     }
   }
+
+  @media (max-width: 425px) {
+    padding: 0 1.25rem;
+  }
 `;
 
 export const CartButton = styled.button`
@@ -53,7 +57,7 @@ export const CartButton = styled.button`
 `;
 
 export const Cart = styled.div`
-  width: 30.375rem;
+  max-width: 30.375rem;
   height: 100vh;
 
   background: ${({ theme }) => theme["blue-500"]};
@@ -88,7 +92,7 @@ export const Cart = styled.div`
 
       h2 {
         font-size: 1.625rem;
-        width: 11.25rem;
+        max-width: 11.25rem;
         color: ${({ theme }) => theme.white};
         font-weight: 700;
       }
@@ -119,6 +123,14 @@ export const Cart = styled.div`
         font-weight: 700;
       }
     }
+
+    @media (max-width: 425px) {
+      padding: 1.5rem 2.125rem;
+    }
+  }
+
+  @media (max-width: 425px) {
+    max-width: 20.625rem;
   }
 `;
 

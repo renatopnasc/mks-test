@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 
-  border: 1px solid ${({ theme }) => theme["gray-300"]};
+  border: 0.2px solid ${({ theme }) => theme["gray-300"]};
   border-radius: 4px;
 
   > button {
@@ -13,7 +13,7 @@ export const Container = styled.div`
     border: none;
     background: none;
 
-    padding: 0.2rem 0.5rem;
+    padding: 0.5rem 0.5rem;
 
     font-size: 1rem;
 
@@ -23,6 +23,12 @@ export const Container = styled.div`
   > p {
     font-size: 0.5rem;
     padding: 0.2rem 0.5rem;
-    border-inline: 1px solid ${({ theme }) => theme["gray-300"]};
+    border-inline: 0.2px solid ${({ theme }) => theme["gray-300"]};
+  }
+
+  @media (max-width: 425px) {
+    > p {
+      font-size: 1.25rem;
+    }
   }
 `;

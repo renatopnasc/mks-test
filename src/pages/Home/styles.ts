@@ -14,6 +14,10 @@ export const Container = styled.div`
   > main {
     overflow: auto;
     padding-block: 7.25rem;
+
+    @media (max-width: 425px) {
+      padding: 3.875rem;
+    }
   }
 
   > footer {
@@ -42,4 +46,8 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.875rem 1.375rem;
+
+  @media (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
 `;

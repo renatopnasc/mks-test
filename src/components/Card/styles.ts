@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 13.625rem;
+  max-width: 100%;
   overflow: hidden;
 
   position: relative;
@@ -10,10 +10,6 @@ export const Container = styled.div`
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.14);
 
   background: ${({ theme }) => theme.white};
-
-  @media (max-width: 425px) {
-    width: 100%;
-  }
 
   > img {
     width: 100%;

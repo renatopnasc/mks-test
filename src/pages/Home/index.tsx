@@ -90,7 +90,13 @@ export function Home() {
       <main>
         <Content>
           {isLoading ? (
-            <SkeletonLoader />
+            <section>
+              {Array(8)
+                .fill(null)
+                .map((_) => (
+                  <SkeletonLoader />
+                ))}
+            </section>
           ) : (
             products.map((product) => (
               <Card

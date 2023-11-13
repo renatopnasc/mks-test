@@ -52,6 +52,10 @@ export const Content = styled.div`
     margin: 0 auto;
 
     max-width: 58.625rem;
+
+    @media (max-width: 425px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 768px) {
